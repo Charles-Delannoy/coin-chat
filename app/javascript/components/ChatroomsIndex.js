@@ -11,7 +11,7 @@ const ChatroomsIndex = () => {
       console.log(data.chatrooms);
       const rooms = data.chatrooms.map((chatroom) => {
         return (
-          <a key={chatroom.id} href={`/chatrooms/${chatroom.id}`}>
+          <a className='chatroom-card' key={chatroom.id} href={`/chatrooms/${chatroom.id}`}>
             <div>
               <h2>{chatroom.name}</h2>
             </div>
@@ -24,7 +24,9 @@ const ChatroomsIndex = () => {
 
   return (
     <Fragment>
-      {chatrooms}
+      <div className='chatrooms-container'>
+        {chatrooms}
+      </div>
     </Fragment>
   );
 }
