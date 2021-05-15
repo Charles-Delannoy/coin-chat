@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   post 'login', to: 'users#create'
   delete 'logout', to: 'users#destroy'
 
-  resources :chatrooms, only: [:index, :create]
+  resources :chatrooms, only: [:index, :create, :show]
 end

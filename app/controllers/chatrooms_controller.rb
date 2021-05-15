@@ -12,6 +12,10 @@ class ChatroomsController < ApplicationController
     end
   end
 
+  def show
+    @chatroom = Chatroom.find(params[:id])
+  end
+
   private
 
   def chatroom_params
