@@ -14,7 +14,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
+    @current_user.destroy
+    reset_session
+    redirect_to login_path
   end
 
   private

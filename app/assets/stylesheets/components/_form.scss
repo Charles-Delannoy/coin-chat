@@ -1,5 +1,5 @@
 .form-container {
-  padding: 30px;
+  padding: 10px 30px 30px 30px;
   background-color: #fff;
   border: thin solid $gray-border;
   margin: 0 auto;
@@ -10,6 +10,24 @@
   }
   input, select {
     height: 30px;
-    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+.field_with_errors {
+  input {
+    width: calc(100% - 8px);
+  }
+  select {
+    width: 100%;
+  }
+}
+
+.form-errors {
+  p {
+    margin: 0;
+    margin-top: 5px;
+    font-size: 12px;
+    color: red;
   }
 }
