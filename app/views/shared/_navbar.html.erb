@@ -3,5 +3,8 @@
     <p>Welcome <%= @current_user.nickname %></p>
     <%= link_to 'Logout', logout_path, method: :delete %>
   <% end %>
-  <h2 class='app-title'>CoinChat</h2>
+  <div class='app-title'>
+    <%= link_to '<i class="fas fa-home"></i>'.html_safe, root_path %>
+    <h2>CoinChat</h2>
+  </div>
 </div>
