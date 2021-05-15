@@ -1,5 +1,11 @@
 module FormErrorsHelper
   def errors_display(model, field)
-    render 'shared/form_errors', model: model, field: field if model.errors.messages[field].any?
+    return '' unless model.errors.messages[field].any?
+
+    result = ''
+    model.errors.messages[field].each do |error|
+      result += "<p>#{error}</p>"
+    end
+    "<div class='form-errors'>#{result}</div>".html_safe
   end
 end

@@ -8,7 +8,9 @@ class ChatroomsController < ApplicationController
     if @chatroom.save
       ActionCable.server.broadcast('chatrooms', { chatrooms: Chatroom.all })
     else
-      render :index
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
