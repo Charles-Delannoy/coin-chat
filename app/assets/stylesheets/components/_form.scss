@@ -1,3 +1,15 @@
-h1 {
-  color: blue;
+.form-container {
+  padding: 30px;
+  background-color: #fff;
+  border: thin solid $gray-border;
+  margin: 0 auto;
+  width: 50%;
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  input, select {
+    height: 30px;
+    margin-bottom: 20px;
+  }
 }
