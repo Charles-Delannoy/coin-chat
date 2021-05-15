@@ -6,6 +6,10 @@ RSpec.describe Chatroom, type: :model do
       Chatroom.destroy_all
     end
 
+    after(:all) do
+      Message.destroy_all
+    end
+
     it 'should validate name presence' do
       chatroom = Chatroom.new()
       chatroom.validate
@@ -24,6 +28,15 @@ RSpec.describe Chatroom, type: :model do
     it 'should persist a chatroom if validation rules are fullfulled' do
       Chatroom.create(name: 'chatroom')
       expect(Chatroom.count).to eq(1)
+    end
+  end
+
+  context 'messages association' do
+    it 'shoul link a chatroom to their messages' do
+      chatroom = Chatroom.create(name: 'chatroom')
+      Message.create(content: 'Hi there', author: 'Joe', chatroom: chatroom)
+      expect(Chatroom.count).to eq(1)
+      expect(chatroom.messages.count).to eq(1)
     end
   end
 end
