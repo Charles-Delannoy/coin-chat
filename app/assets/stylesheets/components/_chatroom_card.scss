@@ -1,0 +1,21 @@
+.chatrooms-container {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-gap: 15px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.chatroom-card {
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: $ligth-blue;
+  width: 100%;
+  transition: transform .5s ease;
+  &:hover {
+    transform: scale(1.05);
+    border: thin solid $light-gray;
+  }
+}

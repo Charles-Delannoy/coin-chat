@@ -1,0 +1,4 @@
+<%= form_with model: chatroom, url: chatrooms_path do |f| %>
+  <%= f.text_field :name, placeholder: 'Chatroom name' %>
+  <%= f.submit 'Create Chatroom' %>
+<% end %>
