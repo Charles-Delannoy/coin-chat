@@ -1,1 +1,9 @@
 <h1>Login</h1>
+
+<div class="form-container">
+  <%= form_with model: @user, url: login_path, local: true do |f| %>
+    <%= f.text_field :nickname, placeholder: 'Nickname' %>
+    <%= f.select :status, ['Available', 'Busy', 'Away'], prompt: 'Select a status' %>
+    <%= f.submit 'Start chatting' %>
+  <% end %>
+</div>
