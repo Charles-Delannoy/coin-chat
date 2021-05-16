@@ -5,11 +5,12 @@ class ChatroomsController < ApplicationController
 
   def create
     @chatroom = Chatroom.new(chatroom_params)
-    if @chatroom.save
-      ActionCable.server.broadcast('chatrooms', { chatrooms: Chatroom.all })
-    else
-      respond_to do |format|
-        format.js
+    respond_to do |format|
+      if @chatroom.save
+        ActionCable.server.broadcast('chatrooms', { chatrooms: Chatroom.all })
+        format.json { render json: { messages: 'Sucess' } }
+      else
+        format.json { render json: { messages: @chatroom.errors.messages } }
       end
     end
   end
