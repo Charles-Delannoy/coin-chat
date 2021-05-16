@@ -9,10 +9,11 @@ const ChatWindow = ({ chatroomId }) => {
 
   useEffect(() => {
     MessagesChannel.received = (data) => {
+      console.log(data.messages);
       const formattedMessages = data.messages.map((message) => {
 
         return (
-          <div key={message.id}>
+          <div className='message' key={message.id}>
             <p>{message.content} <strong>from</strong> {message.author}</p>
           </div>
         );
@@ -29,7 +30,9 @@ const ChatWindow = ({ chatroomId }) => {
         label='Send Message'
         placeHolder='Type your message'
       />
-      {messages}
+      <div className='messages-container'>
+        {messages}
+      </div>
     </Fragment>
   );
 }
