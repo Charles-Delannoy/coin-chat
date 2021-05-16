@@ -1,7 +1,7 @@
-import React, { useState, useEffect, Fragment } from "react"
-import ChatroomIndexChannel from 'channels/chatroom_index_channel'
+import React, { useState, useEffect, Fragment } from "react";
+import ChatroomIndexChannel from 'channels/chatroom_index_channel';
 import SingleFieldForm from './SingleFieldForm';
-// import PropTypes from "prop-types"
+// import PropTypes from "prop-types";
 
 const ChatroomsIndex = () => {
 
@@ -25,7 +25,12 @@ const ChatroomsIndex = () => {
 
   return (
     <Fragment>
-      <SingleFieldForm endPoint='chatrooms' fieldName='name' label='Create Chatroom'/>
+      <SingleFieldForm
+        endPoint='chatrooms'
+        fieldName='name'
+        label='Create Chatroom'
+        placeHolder='Chatroom name'
+      />
       <div className='chatrooms-container'>
         {chatrooms}
       </div>

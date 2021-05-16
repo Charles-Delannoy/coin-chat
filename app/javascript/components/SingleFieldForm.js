@@ -1,7 +1,7 @@
-import React, { Fragment, useEffect, useState } from "react"
-import PropTypes from "prop-types"
+import React, { Fragment, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
-const SingleFieldForm = ({ endPoint, fieldName, label}) => {
+const SingleFieldForm = ({ endPoint, fieldName, label, placeHolder}) => {
 
   const [fieldValue, setFieldValue] = useState('');
   const errorContainer = document.querySelector(".form-errors");
@@ -34,7 +34,7 @@ const SingleFieldForm = ({ endPoint, fieldName, label}) => {
     <Fragment>
       <div className='form-container'>
         <form onSubmit={onFormSubmit}>
-          <input placeholder='Chatroom name' type="text" name="name" value={fieldValue}
+          <input placeholder={placeHolder} type="text" name="name" value={fieldValue}
                  onChange={(event) => setFieldValue(event.target.value)}
           />
           <div className='form-errors'></div>
