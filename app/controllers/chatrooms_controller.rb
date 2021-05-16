@@ -9,7 +9,7 @@ class ChatroomsController < ApplicationController
       ActionCable.server.broadcast('chatrooms', { chatrooms: Chatroom.all })
       render json: { messages: 'Sucess' }
     else
-      render json: { messages: @chatroom.errors.messages }
+      render json: { messages: @chatroom.errors.messages[:name] }
     end
   end
 
