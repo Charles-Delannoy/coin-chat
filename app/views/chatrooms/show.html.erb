@@ -1,0 +1,4 @@
+<div class="chatroom-show-container">
+  <h1><%= @chatroom.name %></h1>
+  <%= react_component("ChatWindow", { chatroomId: @chatroom.id }) %>
+</div>

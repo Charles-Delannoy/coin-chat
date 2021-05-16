@@ -23,5 +23,13 @@
     width: 140px;
     text-align: center;
     left: calc(50% - 70px);
+    display: flex;
+    align-items: center;
+    a {
+      font-size: 25px;
+    }
+    h2 {
+      margin-left: 10px;;
+    }
   }
 }

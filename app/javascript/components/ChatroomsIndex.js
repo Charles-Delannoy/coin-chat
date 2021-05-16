@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react"
 import ChatroomIndexChannel from 'channels/chatroom_index_channel'
+import ChatroomForm from './ChatroomForm';
 // import PropTypes from "prop-types"
 
 const ChatroomsIndex = () => {
@@ -24,6 +25,7 @@ const ChatroomsIndex = () => {
 
   return (
     <Fragment>
+      <ChatroomForm />
       <div className='chatrooms-container'>
         {chatrooms}
       </div>

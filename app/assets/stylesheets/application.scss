@@ -3,7 +3,11 @@
 @import 'config/fonts';
 
 // pages file
- @import 'pages/index';
+@import 'pages/index';
 
- // components file
- @import 'components/index';
+// components file
+@import 'components/index';
+
+// font-awesome
+@import "font-awesome-sprockets";
+@import "font-awesome";

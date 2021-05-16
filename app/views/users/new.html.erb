@@ -6,6 +6,6 @@
     <%= errors_display(@user, :nickname) %>
     <%= f.select :status, ['Available', 'Busy', 'Away'], prompt: 'Select a status' %>
     <%= errors_display(@user, :status) %>
-    <%= f.submit 'Start chatting' %>
+    <%= f.submit 'Start chatting', class:'form-btn'%>
   <% end %>
 </div>

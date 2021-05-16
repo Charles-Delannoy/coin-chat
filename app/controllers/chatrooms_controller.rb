@@ -7,9 +7,14 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.new(chatroom_params)
     if @chatroom.save
       ActionCable.server.broadcast('chatrooms', { chatrooms: Chatroom.all })
+      render json: { messages: 'Sucess' }
     else
-      render :index
+      render json: { messages: @chatroom.errors.messages }
     end
+  end
+
+  def show
+    @chatroom = Chatroom.find(params[:id])
   end
 
   private
