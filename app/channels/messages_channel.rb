@@ -4,7 +4,7 @@ class MessagesChannel < ApplicationCable::Channel
     chatroom = Chatroom.find(params[:id])
     stream_from "chatroom-#{params[:id]}"
 
-    ActionCable.server.broadcast("chatroom-#{params[:id]}", messages: Message.where(chatroom_id: chatroom.id))
+    ActionCable.server.broadcast("chatroom-#{params[:id]}", messages: Message.where(chatroom_id: chatroom.id).order(created_at: :desc))
   end
 
   def unsubscribed

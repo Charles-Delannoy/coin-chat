@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     @message.chatroom = @chatroom
     @message.author = @current_user.nickname
     if @message.save
-      ActionCable.server.broadcast("chatroom-#{@chatroom.id}", { messages: Message.where(chatroom_id: @chatroom.id) })
+      ActionCable.server.broadcast("chatroom-#{@chatroom.id}", { messages: Message.where(chatroom_id: @chatroom.id).order(created_at: :desc) })
       render json: { messages: 'Sucess' }
     else
       render json: { messages: @message.errors.messages[:content] }
