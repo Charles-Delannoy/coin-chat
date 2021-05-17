@@ -1,5 +1,9 @@
 import consumer from './consumer'
 
-const ChatroomIndexChannel = consumer.subscriptions.create('ChatroomIndexChannel');
+let ChatroomIndexChannel = null;
+
+if (window.location.pathname === '/' || '/chatrooms') {
+  ChatroomIndexChannel = consumer.subscriptions.create('ChatroomIndexChannel');
+}
 
 export default ChatroomIndexChannel
