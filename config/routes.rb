@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post 'login', to: 'users#create'
   delete 'logout', to: 'users#destroy'
 
+  resources :users, only: [:update]
+
   resources :chatrooms, only: [:index, :create, :show] do
     resources :messages, only: [:create]
   end

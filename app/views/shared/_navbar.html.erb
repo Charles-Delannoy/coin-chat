@@ -1,6 +1,12 @@
 <div class="navbar">
   <% if @current_user %>
-    <p>Welcome <%= @current_user.nickname %></p>
+    <div>
+      <p>Welcome <%= @current_user.nickname %></p>
+      <%= form_with model: @current_user do |f| %>
+        <%= f.select :status, ['Available', 'Busy', 'Away'] %>
+        <%= f.submit 'Update status' %>
+      <% end %>
+    </div>
     <%= link_to 'Logout', logout_path, method: :delete %>
   <% end %>
   <div class='app-title'>

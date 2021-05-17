@@ -16,6 +16,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    @user.status = user_params[:status]
+    @user.save
+    ActionCable.server.broadcast('users', { users: User.all })
+  end
+
   def destroy
     @current_user.destroy
     reset_session
