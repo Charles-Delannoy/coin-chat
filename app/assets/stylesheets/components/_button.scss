@@ -2,4 +2,8 @@
   background-color: $ligth-blue;
   color: #fff;
   font-size: 15px;
+  transition: background-color .5s ease;
+  &:hover {
+    background-color: $deep-blue;
+  }
 }
