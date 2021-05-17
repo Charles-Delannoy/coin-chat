@@ -3,7 +3,7 @@ class UsersChannel < ApplicationCable::Channel
     # stream_from "some_channel"
     stream_from 'users'
 
-    ActionCable.server.broadcast('users', { users: User.all })
+    ActionCable.server.broadcast('users', { users: User.order(nickname: :asc) })
   end
 
   def unsubscribed

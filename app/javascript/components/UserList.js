@@ -2,18 +2,17 @@ import React, { useState, useEffect, Fragment } from "react";
 import UsersChannel from 'channels/users_channel';
 import PropTypes from "prop-types"
 
-const UserList = () => {
+const UserList = ({ current_user }) => {
   const [users, setUsers] = useState([]);
-
   useEffect(() => {
     UsersChannel.received = (data) => {
-      console.log(data.users);
       const usersDiv = data.users.map((user) => {
         const statusClass = `status ${user.status.toLowerCase()}`
+        const currenUserIdentifier = current_user && current_user.id === user.id ? '(Me) ' : ''
         return (
           <div key={user.id} className='user-card'>
             <div className={statusClass}></div>
-            <h3>{user.nickname}</h3>
+            <h3>{currenUserIdentifier + user.nickname}</h3>
             <p>({user.status})</p>
           </div>
         );
@@ -31,5 +30,9 @@ const UserList = () => {
     </Fragment>
   );
 }
+
+UserList.propTypes = {
+  current_user: PropTypes.object
+};
 
 export default UserList
