@@ -1,3 +1,5 @@
+require 'faker'
+
 class UsersController < ApplicationController
   skip_before_action :check_login
 
@@ -6,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = params[:shuffle] ? User.new(nickname: Faker::Internet.user_name, status: 'Available') : User.new(user_params)
     if @user.save
       ActionCable.server.broadcast('users', { users: User.order(nickname: :asc) })
       session['user_id'] = @user.id
