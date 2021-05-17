@@ -10,7 +10,10 @@
   </head>
 
   <body>
+    <%= react_component("UserList") %>
     <%= render 'shared/navbar' %>
-    <%= yield %>
+    <div class='global-container'>
+      <%= yield %>
+    </div>
   </body>
 </html>
