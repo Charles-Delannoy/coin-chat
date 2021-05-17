@@ -11,10 +11,12 @@ const ChatWindow = ({ chatroomId }) => {
     MessagesChannel.received = (data) => {
       console.log(data.messages);
       const formattedMessages = data.messages.map((message) => {
-
+        console.log(message.created_at)
         return (
           <div className='message' key={message.id}>
-            <p>{message.content} <strong>from</strong> {message.author}</p>
+            <h3>{message.author}</h3>
+            <p>{message.content}</p>
+
           </div>
         );
       });

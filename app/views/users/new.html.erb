@@ -9,3 +9,11 @@
     <%= f.submit 'Start chatting', class:'form-btn'%>
   <% end %>
 </div>
+<p class='login-or'>Or</p>
+<div class="form-container">
+  <p>Let the application choose your nickname and set your status as available</p>
+  <%= form_with url: login_path, local: true do |f| %>
+    <%= f.hidden_field :shuffle, value: 'true' %>
+    <%= f.submit 'Quick start', class:'form-btn'%>
+  <% end %>
+</div>

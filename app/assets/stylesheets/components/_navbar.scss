@@ -33,3 +33,26 @@
     }
   }
 }
+
+.user-infos {
+  select {
+    border-radius: 5px;
+    width: 100%;
+    color: #fff;
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  select.busy {
+    background-color: #aa9200;
+  }
+
+  select.available {
+    background-color: green;
+  }
+
+  select.away {
+    background-color: black;
+  }
+}

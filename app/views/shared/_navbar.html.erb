@@ -1,6 +1,9 @@
 <div class="navbar">
   <% if @current_user %>
-    <p>Welcome <%= @current_user.nickname %></p>
+    <div class='user-infos'>
+      <p>Welcome <%= @current_user.nickname %></p>
+      <%= react_component("StatusForm", { user: @current_user }) %>
+    </div>
     <%= link_to 'Logout', logout_path, method: :delete %>
   <% end %>
   <div class='app-title'>
