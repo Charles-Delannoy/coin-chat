@@ -1,14 +1,13 @@
-require 'faker'
-
 class UsersController < ApplicationController
   skip_before_action :check_login
 
   def new
+    redirect_to root_path if @current_user
     @user = User.new
   end
 
   def create
-    @user = params[:shuffle] ? User.new(nickname: Faker::Internet.user_name, status: 'Available') : User.new(user_params)
+    @user = set_user
     if @user.save
       ActionCable.server.broadcast('users', { users: User.order(nickname: :asc) })
       session['user_id'] = @user.id
@@ -33,6 +32,12 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    return User.new(nickname: Faker::Internet.user_name, status: 'Available') if params[:shuffle]
+
+    @user = User.new(user_params)
+  end
 
   def user_params
     params.require(:user).permit(:nickname, :status)
