@@ -29,7 +29,13 @@
       font-size: 25px;
     }
     h2 {
-      margin-left: 10px;;
+      margin-left: 10px;
+    }
+    @include phone {
+      h2 {
+        display: none;
+      }
+      justify-content: center;
     }
   }
 }
@@ -54,5 +60,11 @@
 
   select.away {
     background-color: black;
+  }
+
+  @include phone {
+    p {
+      display: none;
+    }
   }
 }

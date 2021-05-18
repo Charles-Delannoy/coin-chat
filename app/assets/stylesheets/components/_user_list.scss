@@ -6,6 +6,9 @@
   min-height: calc(100vh - 60px);
   width: 250px;
   border-left: thin solid #fff;
+  @include phone {
+    display: none;
+  }
   h2 {
     text-align: center;
     color: $ligth-blue;
