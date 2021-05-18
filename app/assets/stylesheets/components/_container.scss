@@ -1,3 +1,6 @@
 .global-container {
   margin-right: 250px;
+  @include phone {
+    margin-right: auto
+  }
 }

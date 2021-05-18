@@ -1,0 +1,7 @@
+$smartphone-max: 414px;
+
+@mixin phone {
+   @media (max-width: #{$smartphone-max}) {
+       @content;
+   }
+}

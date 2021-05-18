@@ -9,7 +9,6 @@ const ChatroomsIndex = () => {
 
   useEffect(() => {
     ChatroomIndexChannel.received = (data) => {
-      console.log(data.chatrooms);
       const rooms = data.chatrooms.map((chatroom) => {
         return (
           <a className='chatroom-card' key={chatroom.id} href={`/chatrooms/${chatroom.id}`}>

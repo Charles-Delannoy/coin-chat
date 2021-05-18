@@ -9,14 +9,14 @@ const ChatWindow = ({ chatroomId }) => {
 
   useEffect(() => {
     MessagesChannel.received = (data) => {
-      console.log(data.messages);
       const formattedMessages = data.messages.map((message) => {
-        console.log(message.created_at)
+        const messageDate = new Date(message.created_at);
+        const dateString = `${messageDate.toDateString()} at ${messageDate.getHours()}:${messageDate.getMinutes()}`;
         return (
           <div className='message' key={message.id}>
             <h3>{message.author}</h3>
             <p>{message.content}</p>
-
+            <p className='message-date'>{dateString}</p>
           </div>
         );
       });
