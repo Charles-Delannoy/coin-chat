@@ -7,11 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    if params[:shuffle]
-      @user = User.new(nickname: Faker::Internet.user_name, status: 'Available')
-    else
-      @user = User.new(user_params)
-    end
+    @user = set_user
     if @user.save
       ActionCable.server.broadcast('users', { users: User.order(nickname: :asc) })
       session['user_id'] = @user.id
@@ -36,6 +32,12 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    return User.new(nickname: Faker::Internet.user_name, status: 'Available') if params[:shuffle]
+
+    @user = User.new(user_params)
+  end
 
   def user_params
     params.require(:user).permit(:nickname, :status)
