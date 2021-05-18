@@ -40,4 +40,34 @@ RSpec.describe User, type: :model do
       expect(User.count).to eq(1)
     end
   end
+
+  context 'self#uniq_nickname?' do
+    it 'should return true if nickname is unused' do
+      expect(User.uniq_nickname?('test')).to eq(true)
+    end
+
+    it 'should return false if nickname is used' do
+      User.create(nickname: 'Joe', status: 'Available')
+      expect(User.uniq_nickname?('Joe')).to eq(false)
+    end
+  end
+
+  context 'self#generate_nickname' do
+    it 'should return a string' do
+      expect(User.generate_nickname).to be_a(String)
+    end
+
+    it 'should return a nickname that is unused' do
+      expect(User.where(nickname: User.generate_nickname).empty?).to eq(true)
+    end
+  end
+
+  context 'self#generate_user' do
+    it 'should generate a user' do
+      expect(User.generate_user).to be_a(User)
+    end
+    it 'should generate a user with the status Available' do
+      expect(User.generate_user.status).to eq('Available')
+    end
+  end
 end

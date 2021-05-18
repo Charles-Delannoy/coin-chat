@@ -1,14 +1,17 @@
-require 'faker'
-
 class UsersController < ApplicationController
   skip_before_action :check_login
 
   def new
+    redirect_to root_path if @current_user
     @user = User.new
   end
 
   def create
-    @user = params[:shuffle] ? User.new(nickname: Faker::Internet.user_name, status: 'Available') : User.new(user_params)
+    if params[:shuffle]
+      @user = User.new(nickname: Faker::Internet.user_name, status: 'Available')
+    else
+      @user = User.new(user_params)
+    end
     if @user.save
       ActionCable.server.broadcast('users', { users: User.order(nickname: :asc) })
       session['user_id'] = @user.id
