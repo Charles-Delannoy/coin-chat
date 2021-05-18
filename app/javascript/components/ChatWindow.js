@@ -9,7 +9,6 @@ const ChatWindow = ({ chatroomId }) => {
 
   useEffect(() => {
     MessagesChannel.received = (data) => {
-      console.log(data.messages);
       const formattedMessages = data.messages.map((message) => {
         const messageDate = new Date(message.created_at);
         const dateString = `${messageDate.toDateString()} at ${messageDate.getHours()}:${messageDate.getMinutes()}`;
